@@ -6,7 +6,6 @@ lsp.ensure_installed({
     "rust-analyzer",
 	"lua_ls",
 	"pyright",
-    "sqlls",
     "wgsl-analyzer"
 })
 
