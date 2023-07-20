@@ -15,20 +15,23 @@ pythonPath = function()
     end
 end;
 
-function SetPythonDapMode(mode, file)
-    mode = mode or "single";
+function PythonDebugFile(file)
     file = file or "${file}";
 
-    if mode == "single" then
-        dap.configurations.python = {
-            {
-                name = "Launch file";
-                type = 'python';
-                request = "launch";
-                program = file;
-            }
+    dap.configurations.python = {
+        {
+            name = "Launch file";
+            type = 'python';
+            request = "launch";
+            program = file;
         }
-    elseif mode == "pytest" then
+    }
+end;
+
+function PythonDebugTest(file, test)
+    file = file or "${file}";
+    test = test or nil;
+    if test == nil then
         dap.configurations.python = {
             {
                 name= "Pytest: Current File",
@@ -45,6 +48,26 @@ function SetPythonDapMode(mode, file)
             }
         }
     end;
+
+    if test ~=nil then
+        print(test)
+        dap.configurations.python = {
+            {
+                name= "Pytest: Current File",
+                type= 'python',
+                request= "launch",
+                module= "pytest",
+                args= {
+                    "${file}::${test}",
+                    "::${test}",
+                    "-sv",
+                    "--log-cli-level=INFO",
+                    "--log-file=test_out.log"
+                },
+                console= "integratedTerminal",
+            }
+        }
+    end;
 end;
 
 dap.adapters.python = {
@@ -53,7 +76,7 @@ dap.adapters.python = {
   args = { '-m', 'debugpy.adapter' };
 }
 
-SetPythonDapMode();
+PythonDebugFile();
 
 vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
 vim.keymap.set("n", "<leader>dr", dap.repl.open)
