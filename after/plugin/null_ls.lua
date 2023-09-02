@@ -12,3 +12,5 @@ ls.setup({
         formatting.stylua,
     },
 })
+
+vim.keymap.set("n", "<C-L>", vim.lsp.buf.format)
