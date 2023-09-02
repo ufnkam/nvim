@@ -1,14 +1,14 @@
-local function init()
-	local null_ls = require("null-ls")
-	null_ls.setup({
-		sources = {
-			null_ls.builtins.formatting.black,
-            null_ls.builtins.diagnostics.flake8,
-		},
-	})
-end
+local ls = require("null-ls")
+local formatting = ls.builtins.formatting
+local diagnostics = ls.builtins.diagnostics
 
-return {
-	"jose-elias-alvarez/null-ls.nvim",
-	init = init,
-}
+ls.setup({
+    debug = true,
+    sources = {
+        diagnostics.mypy,
+        diagnostics.pylint,
+        formatting.black.with({ extra_args = { "--fast", "--line_length=120" } }),
+        formatting.isort,
+        formatting.stylua,
+    },
+})
