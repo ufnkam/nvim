@@ -5,7 +5,7 @@ local diagnostics = ls.builtins.diagnostics
 ls.setup({
     debug = true,
     sources = {
-        diagnostics.mypy,
+        diagnostics.mypy.with({ extra_args = { "--disallow-untyped-calls" } }),
         diagnostics.pylint,
         formatting.black.with({ extra_args = { "--fast", "--line_length=120" } }),
         formatting.isort,
