@@ -17,3 +17,4 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 vim.api.nvim_set_option("clipboard","unnamedplus")
+

@@ -94,6 +94,11 @@ _G.packer_plugins = {
     path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
     url = "https://github.com/VonHeikemen/lsp-zero.nvim"
   },
+  ["lspkind.nvim"] = {
+    loaded = true,
+    path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
+    url = "https://github.com/onsails/lspkind.nvim"
+  },
   ["mason-lspconfig.nvim"] = {
     loaded = true,
     path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
@@ -120,15 +125,15 @@ _G.packer_plugins = {
     path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
   },
-  ["nvim-dap"] = {
-    loaded = true,
-    path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/nvim-dap",
-    url = "https://github.com/mfussenegger/nvim-dap"
-  },
   ["nvim-lspconfig"] = {
     loaded = true,
     path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-rg"] = {
+    loaded = true,
+    path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/nvim-rg",
+    url = "https://github.com/duane9/nvim-rg"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -156,6 +161,11 @@ _G.packer_plugins = {
     path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tokyonight.nvim"] = {
+    loaded = true,
+    path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
+  },
   undotree = {
     loaded = true,
     path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/undotree",
@@ -165,6 +175,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  vimspector = {
+    loaded = true,
+    path = "/home/ufnkam/.local/share/nvim/site/pack/packer/start/vimspector",
+    url = "https://github.com/puremourning/vimspector"
   }
 }
 

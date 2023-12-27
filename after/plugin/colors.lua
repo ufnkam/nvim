@@ -1,18 +1,20 @@
-function ColorNvim(background, color)
-    color = color or "rose-pine"
-    background = background or false
-    print(color)
-	vim.cmd.colorscheme(color)
+---@param theme string
+function SetTheme(theme)
+    if theme == nil or theme == 'default 'then
+        theme = 'rose-pine'
+    end
 
-    if background == false then
-	    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-    elseif background == true then
-	    vim.api.nvim_set_hl(1, "Normal", { bg = "none" })
-	    vim.api.nvim_set_hl(1, "NormalFloat", { bg = "none" })
-    end;
+    vim.cmd.colorscheme = theme
+    print(string.format("Theme has been set to: %s", theme))
 
 end
 
+function SetBackground(transparency, background)
+    local defaultTransparency = 1
+    if transparency == nil then
+        transparency = defaultTransparency
+    end
+    vim.api.nvim_set_hl(1, "Normal", { bg = "none" })
+end
 
-ColorNvim()
+SetTheme('tokyonight-moon')

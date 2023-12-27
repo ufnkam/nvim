@@ -3,9 +3,10 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
+    use 'duane9/nvim-rg'
 
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        'nvim-telescope/telescope.nvim', tag = '0.1.4',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
@@ -38,7 +39,6 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },   -- Required
         }
     }
-    use('mfussenegger/nvim-dap')
     use({
         "jose-elias-alvarez/null-ls.nvim",
         requires = { "nvim-lua/plenary.nvim" },
@@ -48,4 +48,11 @@ return require('packer').startup(function(use)
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
+
+    use {
+        'puremourning/vimspector'
+    }
+
+    use {"folke/tokyonight.nvim"}
+    use {"onsails/lspkind.nvim"}
 end)
