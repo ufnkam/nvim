@@ -3,10 +3,14 @@ function SetTheme(theme)
     if theme == nil or theme == 'default 'then
         theme = 'rose-pine'
     end
+    local fnCall = string.format('colorscheme %s', theme)
+    status, _ = pcall(vim.cmd, fnCall)
 
-    vim.cmd.colorscheme = theme
+    if not status then
+        print(string.format("Theme %s cannot be found", theme))
+    end
+
     print(string.format("Theme has been set to: %s", theme))
-
 end
 
 function SetBackground(transparency, background)

@@ -11,7 +11,7 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    use({ 'rose-pine/neovim', as = 'rose-pine', config = function() vim.cmd(' colorscheme rose-pine ') end })
+    use{ 'rose-pine/neovim', as = 'rose-pine'}
 
     use({ 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } })
 
@@ -49,10 +49,34 @@ return require('packer').startup(function(use)
         config = function() require("nvim-autopairs").setup {} end
     }
 
-    use {
-        'puremourning/vimspector'
-    }
-
     use {"folke/tokyonight.nvim"}
     use {"onsails/lspkind.nvim"}
+
+    use({
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        after = "nvim-web-devicons", -- keep this if you're using NvChad
+        config = function()
+            require("barbecue").setup()
+        end,
+    })
+
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    use({
+        "NTBBloodbath/galaxyline.nvim",
+        -- your statusline
+        config = function()
+            require("galaxyline.themes.eviline")
+        end,
+        -- some optional icons
+        requires = { "kyazdani42/nvim-web-devicons", opt = true }
+    })
+    use {
+        'yamatsum/nvim-nonicons',
+        requires = {'kyazdani42/nvim-web-devicons'}
+    }
 end)
