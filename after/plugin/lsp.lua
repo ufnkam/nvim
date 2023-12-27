@@ -17,7 +17,6 @@ end)
 
 
 lsp.setup()
-
 cmp.setup({
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({select = false}),
