@@ -2,7 +2,7 @@ local lsp = require("lsp-zero")
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp = require("cmp")
 local lspkind = require('lspkind')
-
+local lspconfig = require('lspconfig')
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -17,6 +17,16 @@ end)
 
 
 lsp.setup()
+lspconfig.pyright.setup{
+    root_files = {
+        'pyproject.toml',
+        'setup.py',
+        'setup.cfg',
+        'requirements.txt',
+        'Pipfile',
+        './nvim/pyrightconfig.json',
+    }
+}
 cmp.setup({
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({select = false}),

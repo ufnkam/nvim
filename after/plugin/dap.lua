@@ -2,6 +2,7 @@ local dap = require("dap")
 local dapvs = require("dap.ext.vscode")
 local python_env = require("python_env")
 local dapui = require("dapui")
+local path = require('lspconfig.util').path
 
 PythonPath = function()
     -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
@@ -88,10 +89,9 @@ function DebugCurrentFile()
     }
 end
 
-function DebugFileWithConfig(filename)
-    local path = vim.fn.getcwd() .. "/.nvim/" .. filename .. ".json"
-    print(path)
-    dapvs.load_launchjs(path)
+function DebugFileWithConfig()
+    local _path = path.join(vim.fn.getcwd(), ".nvim", "launch.json")
+    dapvs.load_launchjs(_path)
 end
 
 

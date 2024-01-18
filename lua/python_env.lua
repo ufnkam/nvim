@@ -15,6 +15,10 @@ local function get_poetry_dir()
     return ''
 end
 
+local function get_venv_dir(workspace)
+    return path.join(workspace)
+end
+
 local function get_pdm_package()
   return vim.fn.trim(vim.fn.system 'pdm info --packages')
 end
@@ -49,20 +53,32 @@ local function py_bin_dir(dir)
   if is_windows then
     return path.join(dir, 'Scripts;')
   else
-    return path.join(dir, 'bin')
+    return path.join(dir, 'bin', 'python')
   end
 end
 
-M.env = function(root_dir)
+M.env = function(workspace)
     local envp = get_poetry_dir()
-    if envp == '' then
-        envp = get_python_dir(root_dir)
+    local poetryExists = vim.fn.glob(path.join(workspace, 'poetry.lock'))
+    local venvExists = vim.fn.glob(path.join(workspace, 'venv'))
+    if poetryExists ~= '' then
+        envp = get_poetry_dir()
+        print("Using poetry.")
     end
-    if envp == '' then
+    if venvExists ~= '' then
+        envp = venvExists
+        print(string.format("Using %s.", envp))
+    end
+    envp = path.join(envp, "bin", "python")
+
+    if poetryExists == '' and venvExists == '' then
+        print("Using system python.")
         envp = get_py_sys()
-        return envp
     end
-    return envp .. "/bin/python"
+    if vim.fn.executable(envp) ~= 1 or envp == '' then
+        error("Cannot source env.")
+    end
+    return envp
 end
 
 -- PEP 582 support
