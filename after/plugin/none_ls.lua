@@ -5,10 +5,10 @@ local diagnostics = ls.builtins.diagnostics
 ls.setup({
     debug = true,
     sources = {
-        diagnostics.mypy.with({ extra_args = { "--disallow-untyped-calls" } }),
-        diagnostics.pylint,
+        diagnostics.flake8.with({extra_args = {"--max-line-length=120"}}),
         formatting.black.with({ extra_args = { "--fast", "--line_length=120" } }),
         formatting.isort,
+        formatting.autoflake.with({extra_args = {"--max-line-length=120"}}),
         formatting.stylua,
     },
 })

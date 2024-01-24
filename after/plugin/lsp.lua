@@ -3,6 +3,7 @@ local cmp_action = require('lsp-zero').cmp_action()
 local cmp = require("cmp")
 local lspkind = require('lspkind')
 local lspconfig = require('lspconfig')
+local python_env = require("python_env")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
@@ -18,6 +19,18 @@ end)
 
 lsp.setup()
 lspconfig.pyright.setup{
+    on_attach = on_attach;
+    settings = {
+        python = 
+            {
+                pythonPath = python_env.env(vim.fn.getcwd()),
+                analysis = {
+                    extraPaths = "workspace",
+                    autoSearchPaths = true,
+
+                }
+            }
+        };
     root_files = {
         'pyproject.toml',
         'setup.py',
@@ -25,7 +38,7 @@ lspconfig.pyright.setup{
         'requirements.txt',
         'Pipfile',
         './nvim/pyrightconfig.json',
-    }
+    };
 }
 cmp.setup({
     mapping = {
