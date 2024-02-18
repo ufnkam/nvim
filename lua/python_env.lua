@@ -46,7 +46,7 @@ local function get_python_dir(workspace)
 end
 
 local function get_py_sys()
-    return '/usr/bin/python'
+    return '/usr/bin/python3'
 end
 
 local function py_bin_dir(dir)
@@ -74,9 +74,6 @@ M.env = function(workspace)
     if poetryExists == '' and venvExists == '' then
         print("Using system python.")
         envp = get_py_sys()
-    end
-    if vim.fn.executable(envp) ~= 1 or envp == '' then
-        error("Cannot source env.")
     end
     return envp
 end
