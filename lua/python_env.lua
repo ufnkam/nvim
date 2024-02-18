@@ -92,4 +92,7 @@ end
 
 M.conda = function(root_dir) end
 
+
+M.py_path = M.env(vim.fn.getcwd())
+
 return M

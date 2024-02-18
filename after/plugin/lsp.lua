@@ -23,7 +23,7 @@ lspconfig.pyright.setup{
     settings = {
         python = 
             {
-                pythonPath = python_env.env(vim.fn.getcwd()),
+                pythonPath = python_env.py_path,
                 analysis = {
                     extraPaths = "workspace",
                     autoSearchPaths = true,

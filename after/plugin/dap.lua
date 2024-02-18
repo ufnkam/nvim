@@ -20,7 +20,7 @@ end;
 
 dap.adapters.python = {
   type = 'executable';
-  command = python_env.env(vim.fn.getcwd());
+  command = python_env.py_path;
   args = { '-m', 'debugpy.adapter' };
 }
 
