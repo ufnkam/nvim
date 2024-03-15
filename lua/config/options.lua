@@ -16,9 +16,15 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.api.nvim_set_option("clipboard","unnamedplus")
+vim.api.nvim_set_option("clipboard", "unnamedplus")
 
 vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.opt.signcolumn = "number"
+
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>z", vim.cmd.undo)
+vim.keymap.set("n", "<C-b>", vim.cmd.bprev)
+vim.keymap.set("n", "<C-s>", vim.cmd.write)
+vim.opt.showtabline = 0
