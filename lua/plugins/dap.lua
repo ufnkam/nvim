@@ -13,6 +13,11 @@ return {
         command = python_env.py_path,
         args = { "-m", "debugpy.adapter" },
       }
+      dap.adapters.lldb = {
+        type = "executable",
+        name = "lldb",
+        command = vim.fn.stdpath("data") .. "/mason/packages/codelldb/codelldb",
+      }
     end,
   },
   {
