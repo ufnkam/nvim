@@ -3,7 +3,7 @@ local dap = require("dap")
 local dapvs = require("dap.ext.vscode")
 local path = require("lspconfig.util").path
 
-M.DebugCurrentFilefunction = function()
+M.DebugCurrentFile = function()
   dap.configurations.python = {
     {
       name = "Launch file",
