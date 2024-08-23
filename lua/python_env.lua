@@ -67,7 +67,7 @@ M.env = function(workspace)
     envp = venvExists
     print(string.format("Using %s.", envp))
   end
-  envp = path.join(envp, "bin", "python")
+  envp = path.join(envp, "bin", "python3")
 
   if poetryExists == "" and venvExists == "" then
     print("Using system python.")

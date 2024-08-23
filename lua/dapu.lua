@@ -31,6 +31,7 @@ end
 
 M.DebugFileWithConfig = function()
   local _path = path.join(vim.fn.getcwd(), ".nvim", "launch.json")
+  print(_path)
   dapvs.load_launchjs(_path)
 end
 
