@@ -14,19 +14,22 @@ M.DebugCurrentFile = function()
   }
   dap.configurations.rust = {
     {
-      name = "Launch file",
+      name = "Rust debug",
       type = "codelldb",
       request = "launch",
-      program = "${file}",
+      program = function()
+        vim.fn.jobstart("cargo build")
+        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+      end,
       cwd = "${workspaceFolder}",
-      stopOnEntry = false,
+      stopOnEntry = true,
+      show_Disassemly = "never",
     },
   }
 end
 
 M.DebugFileWithConfig = function()
   local _path = path.join(vim.fn.getcwd(), ".nvim", "launch.json")
-  print(_path)
   dapvs.load_launchjs(_path)
 end
 

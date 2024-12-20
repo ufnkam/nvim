@@ -21,6 +21,7 @@ return {
           args = { "--port", "${port}" },
         },
       }
+      vim.fn.sign_define("DapBreakpoint", { text = "•", texthl = "red", linehl = "", numhl = "" })
     end,
 
     --vim.highlight.create("DapBreakpoint", { ctermbg = 0, guifg = "#993939", guibg = "#31353f" }, false),
