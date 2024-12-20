@@ -28,3 +28,4 @@ vim.keymap.set("n", "<leader>z", vim.cmd.undo)
 vim.keymap.set("n", "<C-b>", vim.cmd.bprev)
 vim.keymap.set("n", "<C-s>", vim.cmd.write)
 vim.opt.showtabline = 0
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

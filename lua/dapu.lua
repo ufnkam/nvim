@@ -14,17 +14,12 @@ M.DebugCurrentFile = function()
   }
   dap.configurations.rust = {
     {
-      command = "cargo",
       name = "Launch file",
-      type = "lldb",
+      type = "codelldb",
       request = "launch",
-      program = function()
-        return vim.fn.getcwd() .. "/", "/target/debug/constellar-driver-manager"
-      end,
+      program = "${file}",
       cwd = "${workspaceFolder}",
       stopOnEntry = false,
-      args = {},
-      runInTerminal = false,
     },
   }
 end
