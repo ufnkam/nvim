@@ -21,6 +21,28 @@ return {
           args = { "--port", "${port}" },
         },
       }
+      dap.configurations.python = {
+        {
+          name = "Launch file",
+          type = "python",
+          request = "launch",
+          program = "${file}",
+        },
+      }
+      dap.configurations.rust = {
+        {
+          name = "Rust debug",
+          type = "codelldb",
+          request = "launch",
+          program = function()
+            vim.fn.jobstart("cargo build")
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/target/debug/", "file")
+          end,
+          cwd = "${workspaceFolder}",
+          stopOnEntry = true,
+          show_Disassemly = "never",
+        },
+      }
       vim.fn.sign_define("DapBreakpoint", { text = "•", texthl = "red", linehl = "", numhl = "" })
     end,
 
