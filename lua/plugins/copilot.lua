@@ -5,23 +5,24 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     opts = {
-      suggestion = { enabled = true },
-      panel = { enabled = true },
+      suggestion = {
+        enabled = true,
+        auto_trigger = true, -- Suggestions appear as you type
+        debounce = 75,
+        keymap = {
+          accept = "<CR>", -- Enter to accept
+          accept_word = false,
+          accept_line = false,
+          next = "<M-]>",
+          prev = "<M-[>",
+          dismiss = "<Esc>", -- Esc to decline
+        },
+      },
+      panel = { enabled = false },
     },
   },
   {
     "nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-emoji",
-      {
-        "zbirenbaum/copilot-cmp",
-        opts = {},
-      },
-    },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      local cmp = require("cmp")
-      opts.sources = cmp.config.sources(vim.list_extend(opts.sources, { { name = "copilot" }, { name = "emoji" } }))
-    end,
+    enabled = true,
   },
 }

@@ -1,3 +1,6 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.opt.nu = true
 
 vim.opt.tabstop = 4
@@ -23,9 +26,6 @@ vim.opt.relativenumber = true
 
 vim.opt.signcolumn = "number"
 
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>z", vim.cmd.undo)
-vim.keymap.set("n", "<C-b>", vim.cmd.bprev)
-vim.keymap.set("n", "<C-s>", vim.cmd.write)
+vim.api.nvim_create_user_command("Ex", "Oil", {})
 vim.opt.showtabline = 0
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

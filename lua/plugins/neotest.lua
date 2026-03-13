@@ -1,18 +1,38 @@
 return {
   {
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended for stable releases
+    lazy = false, -- This plugin is already lazy
+    config = function()
+      vim.g.rustaceanvim = {
+        server = {
+          settings = {
+            ["rust-analyzer"] = {
+              check = {
+                command = "clippy",
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
+  {
     "antoinemadec/FixCursorHold.nvim",
   },
   {
-    "rouge8/neotest-rust",
-  },
-  {
     "nvim-neotest/neotest",
-    config = function()
-      require("neotest").setup({
-        adapters = {
-          require("neotest-rust"),
-        },
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+    },
+    opts = function(_, opts)
+      opts.adapters = opts.adapters or {}
+      vim.list_extend(opts.adapters, {
+        require("rustaceanvim.neotest"),
       })
+    end,
+    config = function(_, opts)
+      require("neotest").setup(opts)
     end,
   },
 }

@@ -10,6 +10,7 @@ return {
         end
       end,
     },
+    rust = { "rustfmt" },
     events = { "BufWritePost", "BufReadPost", "InsertLeave" },
   }),
 }
