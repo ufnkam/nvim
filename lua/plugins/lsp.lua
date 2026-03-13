@@ -13,12 +13,13 @@ return {
             python = {
               pythonPath = python_env.py_path,
               analysis = {
-                extraPaths = "workspace",
+                extraPaths = {},
                 autoSearchPaths = true,
               },
             },
           },
         },
+        ruff = {},
         taplo = {},
       },
     },

@@ -10,7 +10,7 @@ return {
         auto_trigger = true, -- Suggestions appear as you type
         debounce = 75,
         keymap = {
-          accept = "<CR>", -- Enter to accept
+          accept = false, -- Handled by nvim-cmp in cmp.lua
           accept_word = false,
           accept_line = false,
           next = "<M-]>",

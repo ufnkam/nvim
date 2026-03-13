@@ -1,6 +1,6 @@
 return {
   "stevearc/conform.nvim",
-  require("conform").setup({
+  opts = {
     formatters_by_ft = {
       python = function(bufnr)
         if require("conform").get_formatter_info("ruff_format", bufnr).available then
@@ -11,6 +11,9 @@ return {
       end,
     },
     rust = { "rustfmt" },
-    events = { "BufWritePost", "BufReadPost", "InsertLeave" },
-  }),
+    format_on_save = {
+      timeout_ms = 500,
+      lsp_fallback = true,
+    },
+  },
 }
